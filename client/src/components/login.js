@@ -1,7 +1,9 @@
 import React from 'react';
 import { Form, Segment, Grid, Header, Message } from 'semantic-ui-react';
+import * as actionCreators from '../actions/loginActionCreator';
+import { connect } from 'react-redux';
 
-export default class Login extends React.Component {
+class Login extends React.PureComponent {
 
     render() {
         const lastLoginInfos = this.props.lastLoginFailed ? <Message negative>Invalid email or password</Message> : "";
@@ -35,3 +37,15 @@ export default class Login extends React.Component {
     }
 
 }
+
+
+function mapStateToProps(state) {
+
+    return {
+        lastLoginFailed: state.login.get('lastLoginFailed')
+    };
+}
+
+
+export { Login };
+export const LoginContainer = connect(mapStateToProps, actionCreators)(Login);

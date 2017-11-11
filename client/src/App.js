@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import logo from './logo.svg';
-import Login from './components/login.js'
+import { LoginContainer } from './components/login.js'
 import './App.css';
 
 class App extends Component {
   render() {
-    let lastLoginFailed = true;
     return (
       <div className="App">
         <header className="App-header">
@@ -18,7 +17,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Switch>
-          <Route path='/login' component={(props) => <Login {...props} lastLoginFailed={lastLoginFailed} />} />
+          <Route path='/login' component={LoginContainer} />
         </Switch>
       </div>
     );
