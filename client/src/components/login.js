@@ -5,6 +5,19 @@ import { connect } from 'react-redux';
 
 class Login extends React.PureComponent {
 
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    handleEmailChange(e) {
+        this.setState({ email: e.target.value });
+    }
+
+    handlePasswordChange(e) {
+        this.setState({ password: e.target.value });
+    }
+
     render() {
         const lastLoginInfos = this.props.lastLoginFailed ? <Message negative>Invalid email or password</Message> : "";
 
@@ -22,9 +35,9 @@ class Login extends React.PureComponent {
                         {lastLoginInfos}
                         <Form size='large'>
                             <Segment raised>
-                                <Form.Input placeholder='Email' />
-                                <Form.Input placeholder='Password' type="password" />
-                                <Form.Button color='teal'>Login</Form.Button>
+                                <Form.Input placeholder='Email' onChange={this.handleEmailChange.bind(this)} />
+                                <Form.Input placeholder='Password' type="password" onChange={this.handlePasswordChange.bind(this)} />
+                                <Form.Button color='teal' onClick={() => this.props.login(this.state.email, this.state.password)}>Login</Form.Button>
                             </Segment>
                         </Form>
                         <Message>
@@ -40,11 +53,12 @@ class Login extends React.PureComponent {
 
 
 function mapStateToProps(state) {
-
     return {
         lastLoginFailed: state.login.get('lastLoginFailed')
     };
 }
+
+
 
 
 export { Login };
