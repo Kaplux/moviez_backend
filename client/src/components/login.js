@@ -4,6 +4,8 @@ import { Button, Form, Segment, Grid, Header, Message } from 'semantic-ui-react'
 export default class Login extends React.Component {
 
     render() {
+        const lastLoginInfos = this.props.lastLoginFailed ? <Message negative>Invalid email or password</Message> : "";
+
         return (
             <div>
                 <Grid
@@ -15,6 +17,7 @@ export default class Login extends React.Component {
                         <Header as='h2' color='teal' textAlign='center'>
                             {' '}Log-in to your account
                         </Header>
+                        {lastLoginInfos}
                         <Form size='medium'>
                             <Segment raised>
                                 <Form.Input placeholder='Email' />

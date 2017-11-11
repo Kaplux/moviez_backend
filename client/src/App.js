@@ -7,6 +7,7 @@ import './App.css';
 
 class App extends Component {
   render() {
+    let lastLoginFailed = true;
     return (
       <div className="App">
         <header className="App-header">
@@ -17,7 +18,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Switch>
-          <Route path='/login' component={Login} />
+          <Route path='/login' component={(props) => <Login {...props} lastLoginFailed={lastLoginFailed} />} />
         </Switch>
       </div>
     );
