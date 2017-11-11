@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Segment, Grid, Header, Message } from 'semantic-ui-react';
+import { Form, Segment, Grid, Header, Message, Dimmer, Loader } from 'semantic-ui-react';
 import * as actionCreators from '../actions/loginActionCreator';
 import { connect } from 'react-redux';
 
@@ -20,9 +20,11 @@ class Login extends React.PureComponent {
 
     render() {
         const lastLoginInfos = this.props.lastLoginFailed ? <Message negative>Invalid email or password</Message> : "";
-
         return (
             <div>
+                <Dimmer active={this.props.loginInProgress}>
+                    <Loader />
+                </Dimmer>
                 <Grid
                     textAlign='center'
                     style={{ height: '100%' }}
@@ -54,7 +56,8 @@ class Login extends React.PureComponent {
 
 function mapStateToProps(state) {
     return {
-        lastLoginFailed: state.login.get('lastLoginFailed')
+        lastLoginFailed: state.login.get('lastLoginFailed'),
+        loginInProgress: state.login.get('loginInProgress')
     };
 }
 
