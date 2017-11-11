@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Button, Form, Segment, Grid, Header, Message } from 'semantic-ui-react';
+import React from 'react';
+import { Form, Segment, Grid, Header, Message } from 'semantic-ui-react';
 
 export default class Login extends React.Component {
 
@@ -18,7 +18,7 @@ export default class Login extends React.Component {
                             {' '}Log-in to your account
                         </Header>
                         {lastLoginInfos}
-                        <Form size='medium'>
+                        <Form size='large'>
                             <Segment raised>
                                 <Form.Input placeholder='Email' />
                                 <Form.Input placeholder='Password' type="password" />
