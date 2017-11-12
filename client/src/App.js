@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import logo from './logo.svg';
 import { LoginContainer } from './components/login.js'
+import { HomeContainer } from './components/home.js'
+
 import './App.css';
 
 class App extends Component {
@@ -18,6 +20,7 @@ class App extends Component {
         </p>
         <Switch>
           <Route path='/login' component={LoginContainer} />
+          <Route path='/' component={HomeContainer} />
         </Switch>
       </div>
     );

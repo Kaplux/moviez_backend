@@ -18,7 +18,7 @@ export function login(email, password) {
             .then(
             (response) => {
                 console.log(response);
-                response.ok ? dispatch(loginSuccess()) : dispatch(loginFailure());
+                response.ok ? dispatch(loginSuccess(email)) : dispatch(loginFailure());
             }
             )
             .catch(() => dispatch(loginFailure()))
@@ -27,10 +27,11 @@ export function login(email, password) {
     };
 }
 
-export function loginSuccess() {
+export function loginSuccess(email) {
     console.log("login success");
     return {
-        type: 'LOGIN_REQUEST_SUCCESS'
+        type: 'LOGIN_REQUEST_SUCCESS',
+        email
     }
 
 }
