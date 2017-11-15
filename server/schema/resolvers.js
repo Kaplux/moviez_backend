@@ -1,4 +1,16 @@
-const sessions = [{ id: 1, name: "Session1" }];
+const sessions = [
+  {
+    id: 1,
+    name: "Session1",
+    movies: [
+      {
+        id: 1,
+        name: "La 5ème vague",
+        imdbURL: "http://www.imdb.com/title/tt2304933/"
+      }
+    ]
+  }
+];
 
 const groups = [{ id: 1, name: "Group1", sessionIds: [1], userIds: [1, 2] }];
 

@@ -20,6 +20,22 @@ const typeDefs = `
   type Session {
     id: ID!
     name: String!
+    movies: [Movie]!
+    winner: Movie
+    votes: Vote
+  }
+
+  type Movie {
+    id: ID!
+    name: String!
+    imdbURL: String!
+  }
+
+  type Vote {
+    id: ID!
+    user: User!
+    movie: Movie!
+    rank: Int!
   }
 
   type Query {
