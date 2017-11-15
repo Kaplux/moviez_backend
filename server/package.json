@@ -10,5 +10,8 @@
     "graphql-tools": "^2.7.2",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
