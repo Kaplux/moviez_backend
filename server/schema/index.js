@@ -7,6 +7,7 @@ const typeDefs = `
     id: ID!
     firstname: String!
     lastname: String!
+    email: String!
     groups: [Group]!
   }
 
@@ -40,6 +41,7 @@ const typeDefs = `
 
   type Query {
     allUsers: [User]!
+    user(email: String!): User
   }
 `;
 
