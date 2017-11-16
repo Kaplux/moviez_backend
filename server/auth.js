@@ -4,12 +4,12 @@ const jwt = require("jsonwebtoken");
 var users = [
   {
     id: 1,
-    email: "jonathanmh",
-    password: "%2yx4"
+    email: "test@test.com",
+    password: "test"
   },
   {
     id: 2,
-    email: "test",
+    email: "user2@test.com",
     password: "test"
   }
 ];
