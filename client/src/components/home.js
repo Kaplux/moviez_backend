@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { CurrentSessionContainer } from './session.js'
 class Home extends React.PureComponent {
 
     render() {
 
         return (
             <div>
-                home {this.props.email}
+                <CurrentSessionContainer />
             </div>
         );
 

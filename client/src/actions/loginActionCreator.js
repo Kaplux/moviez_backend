@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { loadCurrentSession } from './sessionActionCreator'
 
 export function login(email, password) {
     console.log("login attempt");
@@ -18,10 +19,18 @@ export function login(email, password) {
             .then(
             (response) => {
                 console.log(response);
-                response.ok ? dispatch(loginSuccess(email)) : dispatch(loginFailure());
+                if (response.ok) {
+                    dispatch(loginSuccess(email));
+                    dispatch(loadCurrentSession(email));
+
+                } else {
+                    dispatch(loginFailure());
+                }
             }
             )
-            .catch(() => dispatch(loginFailure()))
+            .catch((e) => {
+                console.log(e); dispatch(loginFailure());
+            })
 
 
     };
