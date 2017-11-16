@@ -15,7 +15,17 @@ export function loadCurrentSession(email) {
             query: gql`
               query myuser($email: String!){
                   user(email: $email) {
-                    id
+                    groups{
+                        sessions{
+                            id
+                            name
+                            movies{
+                                id
+                                name
+                                imdbURL
+                            }
+                        }
+                    }
                   }
               }
             `, variables: {
@@ -25,6 +35,7 @@ export function loadCurrentSession(email) {
             .then(
             (response) => {
                 console.log(response);
+                dispatch(loadCurrentSessionSuccess(response.data.user.groups[0].sessions[0]));
             }
             )
             .catch(e => { console.log(e); dispatch(loadCurrentSessionFailure()) })

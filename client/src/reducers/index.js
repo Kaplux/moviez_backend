@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import login from './login'
-import currentSession from './currentSession'
+import session from './session'
 
 export default combineReducers({
-    login, currentSession
+    login, session
 })

@@ -18,7 +18,7 @@ class Session extends React.PureComponent {
 
 function mapStateToProps(state) {
     return {
-        name: state.currentSession.get('name'),
+        name: state.session.getIn(['currentSession', 'name']),
     };
 }
 
