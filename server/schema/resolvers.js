@@ -14,6 +14,12 @@ const sessions = [
         name: "Scream",
         imdbURL:
           "https://i.pinimg.com/originals/62/6e/4a/626e4a11d2686970cf40d6cbc9238f7a.jpg"
+      },
+      {
+        id: 3,
+        name: "How High",
+        imdbURL:
+          "http://fr.web.img2.acsta.net/c_215_290/medias/nmedia/18/96/51/99/20472431.jpg"
       }
     ]
   }
