@@ -9,27 +9,21 @@ class Movie extends React.PureComponent {
 
         return (
 
-            <Card>
-                <Image src={this.props.imdbURL} />
+            <Card centered>
+                <Image src={this.props.imdbURL} size="medium" centered />
                 <Card.Content>
                     <Card.Header>
                         {this.props.name}
                     </Card.Header>
                     <Card.Meta>
                         <span className='date'>
-                            Joined in 2015
+                            2015
         </span>
                     </Card.Meta>
                     <Card.Description>
-                        Matthew is a musician living in Nashville.
-      </Card.Description>
+                        Post hanc adclinis Libano monti Phoenice, regio plena gratiarum et venustatis, urbibus decorata magnis et pulchris; in quibus amoenitate celebritateque nominum Tyros excellit, Sidon et Berytus isdemque pares Emissa et Damascus saeculis condita priscis.                     </Card.Description>
                 </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-      </a>
-                </Card.Content>
+
             </Card>
         );
 
