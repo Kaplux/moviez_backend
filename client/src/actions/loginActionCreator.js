@@ -21,8 +21,6 @@ export function login(email, password) {
                 console.log(response);
                 if (response.ok) {
                     dispatch(loginSuccess(email));
-                    dispatch(loadCurrentSession(email));
-
                 } else {
                     dispatch(loginFailure());
                 }

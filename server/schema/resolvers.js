@@ -6,7 +6,14 @@ const sessions = [
       {
         id: 1,
         name: "La 5ème vague",
-        imdbURL: "http://www.imdb.com/title/tt2304933/"
+        imdbURL:
+          "http://fr.web.img3.acsta.net/pictures/15/10/23/14/52/531725.jpg"
+      },
+      {
+        id: 2,
+        name: "Scream",
+        imdbURL:
+          "https://i.pinimg.com/originals/62/6e/4a/626e4a11d2686970cf40d6cbc9238f7a.jpg"
       }
     ]
   }
