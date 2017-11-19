@@ -1,7 +1,7 @@
 
 import { Map } from 'immutable';
 
-export default function login(state = Map(), action) {
+export default function session(state = Map(), action) {
     switch (action.type) {
         case 'LOAD_CURRENT_SESSION_REQUEST':
             return state.set('loading', true);
