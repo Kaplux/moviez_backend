@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import { LoginContainer } from './components/login.js'
 import { HomeContainer } from './components/home.js'
+import { SessionCreator } from './components/sessionCreator.js'
+
 import { Header } from "semantic-ui-react"
 
 import './App.css';
@@ -16,6 +18,7 @@ class App extends Component {
         </header>
         <Switch>
           <Route path='/login' component={LoginContainer} />
+          <Route path='/createSession' component={SessionCreator} />
           <Route path='/' component={HomeContainer} />
         </Switch>
       </div>
