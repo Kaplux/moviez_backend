@@ -51,6 +51,10 @@ const typeDefs = `
     allUsers: [User]!
     user(email: String!): User
   }
+
+  type Mutation {
+    addSession(groupId: ID!,name: String!): Session
+  }
 `;
 
 // Generate the schema object from your types definition.

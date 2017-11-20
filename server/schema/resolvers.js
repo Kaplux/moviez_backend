@@ -1,6 +1,8 @@
-const sessions = [
+const uuidv4 = require("uuid/v4");
+
+let sessions = [
   {
-    id: 1,
+    id: "1",
     name: "Session1",
     status: "OPEN",
     movies: [
@@ -26,22 +28,24 @@ const sessions = [
   }
 ];
 
-const groups = [{ id: 1, name: "Group1", sessionIds: [1], userIds: [1, 2] }];
+const groups = [
+  { id: "1", name: "Group1", sessionIds: ["1"], userIds: ["1", "2"] }
+];
 
 const users = [
   {
-    id: 1,
+    id: "1",
     firstname: "test",
     lastname: "test",
     email: "test@test.com",
-    groupIds: [1]
+    groupIds: ["1"]
   },
   {
-    id: 2,
+    id: "2",
     firstname: "user2",
     lastname: "user2",
     email: "user2@test.com",
-    groupIds: [1]
+    groupIds: ["1"]
   }
 ];
 
@@ -49,6 +53,22 @@ module.exports = {
   Query: {
     allUsers: () => users,
     user: (obj, { email }, context) => users.find(user => user.email === email)
+  },
+  Mutation: {
+    addSession: (obj, { groupId, name }) => {
+      let newSessionId = uuidv4();
+      let newSession = {
+        id: newSessionId,
+        name: name,
+        status: "NEW",
+        movies: []
+      };
+      sessions.push(newSession);
+      groups.find(group => group.id == groupId).sessionIds.push(newSessionId);
+      console.log(sessions);
+      console.log(groups);
+      return newSession;
+    }
   },
   User: {
     groups(user) {
