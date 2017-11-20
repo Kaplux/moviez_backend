@@ -2,6 +2,7 @@ const sessions = [
   {
     id: 1,
     name: "Session1",
+    status: "OPEN",
     movies: [
       {
         id: 1,
@@ -55,9 +56,12 @@ module.exports = {
     }
   },
   Group: {
-    sessions(group) {
+    sessions(group, args) {
+      console.log(args.status);
       return sessions.filter(
-        session => group.sessionIds.indexOf(session.id) !== -1
+        session =>
+          group.sessionIds.indexOf(session.id) !== -1 &&
+          session.status === args.status
       );
     },
     users(group) {

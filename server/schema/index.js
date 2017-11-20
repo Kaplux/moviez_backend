@@ -3,6 +3,12 @@ const resolvers = require("./resolvers");
 
 // Define your types here.
 const typeDefs = `
+    enum SessionStatus {
+        NEW
+        OPEN
+        CLOSED
+    }
+    
   type User {
     id: ID!
     firstname: String!
@@ -14,16 +20,18 @@ const typeDefs = `
   type Group {
     id: ID!
     name: String!
-    sessions: [Session]!
+    sessions(status:SessionStatus): [Session]!
     users: [User]!
   }
 
   type Session {
     id: ID!
     name: String!
+    status: SessionStatus!
     movies: [Movie]!
     winner: Movie
     votes: Vote
+
   }
 
   type Movie {
