@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { CurrentSessionContainer } from './session.js';
+import { OpenSessionsContainer, NewSessionsContainer } from './sessions.js';
 import * as actionCreators from '../actions/sessionActionCreator.js';
 import { Button, Icon, Divider } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
@@ -20,7 +20,9 @@ class Home extends React.PureComponent {
                     <Button size="big"><Icon name="history" />View past sessions</Button>
                 </Button.Group>
                 <Divider hidden />
-                <CurrentSessionContainer />
+                <OpenSessionsContainer />
+                <Divider hidden />
+                <NewSessionsContainer />
 
             </div >
 
@@ -29,7 +31,7 @@ class Home extends React.PureComponent {
     }
 
     componentDidMount() {
-        this.props.loadCurrentSession(this.props.email);
+        this.props.loadNewAndOpenSessions(this.props.email);
     }
 
 

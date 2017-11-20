@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { loadCurrentSession } from './sessionActionCreator'
 
 export function login(email, password) {
     console.log("login attempt");

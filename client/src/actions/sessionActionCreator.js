@@ -4,11 +4,10 @@ import gql from 'graphql-tag';
 
 const client = new ApolloClient();
 
-export function loadCurrentSession(email) {
-    console.log("loadCurrentSession");
+export function loadNewAndOpenSessions(email) {
     return (dispatch) => {
         dispatch({
-            type: 'LOAD_CURRENT_SESSION_REQUEST'
+            type: 'LOAD_NEW_AND_OPEN_SESSIONS_REQUEST'
         });
 
         return client.query({
@@ -16,7 +15,16 @@ export function loadCurrentSession(email) {
               query myuser($email: String!){
                   user(email: $email) {
                     groups{
-                        sessions{
+                        newSessions:sessions(status:NEW){
+                            id
+                            name
+                            movies{
+                                id
+                                name
+                                imdbURL
+                            }
+                        }
+                        openSessions:sessions(status:OPEN){
                             id
                             name
                             movies{
@@ -35,27 +43,28 @@ export function loadCurrentSession(email) {
             .then(
             (response) => {
                 console.log(response);
-                dispatch(loadCurrentSessionSuccess(response.data.user.groups[0].sessions[0]));
+                dispatch(loadNewAndOpenSessionsSuccess(response.data.user.groups[0].newSessions, response.data.user.groups[0].openSessions));
             }
             )
-            .catch(e => { console.log(e); dispatch(loadCurrentSessionFailure()) })
+            .catch(e => { console.log(e); dispatch(loadNewAndOpenSessionsFailure()) })
 
 
     };
 }
 
-export function loadCurrentSessionSuccess(currentSession) {
+export function loadNewAndOpenSessionsSuccess(newSessions, openSessions) {
     return {
-        type: 'LOAD_CURRENT_SESSION_SUCCESS',
-        currentSession
+        type: 'LOAD_NEW_AND_OPEN_SESSIONS_SUCCESS',
+        newSessions,
+        openSessions
     }
 
 }
 
 
-export function loadCurrentSessionFailure() {
+export function loadNewAndOpenSessionsFailure() {
     return {
-        type: 'LOAD_CURRENT_SESSION_FAILURE'
+        type: 'LOAD_NEW_AND_OPEN_SESSIONS_FAILURE'
     }
 
 }
