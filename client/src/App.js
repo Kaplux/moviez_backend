@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Header size="massive" color="grey">Moviez</Header>
+          <Header size="huge" color="grey">Moviez</Header>
         </header>
         <Switch>
           <Route path='/login' component={LoginContainer} />

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Form, Segment, Header, Button, Grid } from "semantic-ui-react";
 
 class SessionCreator extends React.PureComponent {

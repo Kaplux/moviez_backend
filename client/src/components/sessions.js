@@ -8,12 +8,10 @@ class Sessions extends React.PureComponent {
 
     render() {
         let sessions = this.props.sessions || [];
-        console.log("render");
-        console.log(sessions);
         return (
             <div>
                 {sessions.map((session) =>
-                    <Session movies={session.get('movies')} />
+                    <Session key={session.get('id')} movies={session.get('movies')} />
                 )}
             </div>
         );

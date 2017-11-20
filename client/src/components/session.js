@@ -1,7 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Movie from './movie.js';
-import { Container, Card, Segment, Header } from 'semantic-ui-react';
+import { Container, Card, Header } from 'semantic-ui-react';
 
 
 export class Session extends React.PureComponent {
@@ -12,9 +11,9 @@ export class Session extends React.PureComponent {
             <div>
                 <Container >
                     <Header size="huge">{this.props.name}</Header>
-                    <Card.Group horizontal>
+                    <Card.Group horizontal="true">
                         {movies.map((movie) =>
-                            <Movie name={movie.get('name')} imdbURL={movie.get('imdbURL')} />
+                            <Movie key={movie.get('id')} name={movie.get('name')} imdbURL={movie.get('imdbURL')} />
                         )}
                     </Card.Group>
                 </Container>
