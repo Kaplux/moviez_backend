@@ -14,7 +14,7 @@ class SessionCreator extends React.PureComponent {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 650 }}>
-            <Header as="h2" primary textAlign="center">
+            <Header as="h2" primary="true" textAlign="center">
               New Session
             </Header>
             <Form size="large">
