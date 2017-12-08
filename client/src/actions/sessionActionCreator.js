@@ -1,5 +1,6 @@
 import ApolloClient from "apollo-client-preset";
 import gql from "graphql-tag";
+import { push } from "react-router-redux";
 
 const client = new ApolloClient();
 
@@ -77,17 +78,22 @@ export function createSession(sessionName) {
       type: "CREATE_NEW_SESSION_REQUEST"
     });
 
-    return client.mutate({
-      mutation: gql`
-        mutation createSession($sessionName: String!) {
-          addSession(groupId: 1, name: $sessionName) {
-            id
+    return client
+      .mutate({
+        mutation: gql`
+          mutation createSession($sessionName: String!) {
+            addSession(groupId: 1, name: $sessionName) {
+              id
+            }
           }
+        `,
+        variables: {
+          sessionName: sessionName
         }
-      `,
-      variables: {
-        sessionName: sessionName
-      }
-    });
+      })
+      .then(response => {
+        console.log(response);
+        dispatch(push("/"));
+      });
   };
 }
