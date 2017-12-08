@@ -84,6 +84,12 @@ export function createSession(sessionName) {
           mutation createSession($sessionName: String!) {
             addSession(groupId: 1, name: $sessionName) {
               id
+              name
+              movies {
+                id
+                name
+                imdbURL
+              }
             }
           }
         `,
@@ -93,7 +99,15 @@ export function createSession(sessionName) {
       })
       .then(response => {
         console.log(response);
+        dispatch(createSessionSuccess(response.data["addSession"]));
         dispatch(push("/"));
       });
+  };
+}
+
+function createSessionSuccess(session) {
+  return {
+    type: "CREATE_SESSION_SUCCESS",
+    session
   };
 }
