@@ -4,6 +4,15 @@ import * as actionCreators from "../actions/sessionActionCreator";
 import { connect } from "react-redux";
 
 class SessionCreator extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { sessionName: "" };
+  }
+  submitForm() {
+    if (this.state.sessionName) {
+      this.props.createSession(this.state.sessionName);
+    }
+  }
   render() {
     return (
       <div>
@@ -28,9 +37,7 @@ class SessionCreator extends React.PureComponent {
                   primary
                   fluid
                   size="large"
-                  onClick={() =>
-                    this.props.createSession(this.state.sessionName)
-                  }
+                  onClick={() => this.submitForm()}
                 >
                   Create
                 </Button>
