@@ -40,7 +40,8 @@ export function loginSuccess(email, token) {
   persistUserInfos(email, token);
   return {
     type: "LOGIN_REQUEST_SUCCESS",
-    email
+    email,
+    token
   };
 }
 
