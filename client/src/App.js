@@ -6,10 +6,17 @@ import { HomeContainer } from "./components/home.js";
 import { SessionCreatorContainer } from "./components/sessionCreator.js";
 
 import { Header } from "semantic-ui-react";
+import * as actionCreators from "./actions/initActionCreator.js";
+import { connect } from "react-redux";
 
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.props.init();
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export const AppContainer = connect(null, actionCreators)(App);

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { AppContainer } from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import "semantic-ui-css/semantic.min.css";
-import { Router } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 import reducers from "./reducers/index.js";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -28,7 +28,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <Route component={AppContainer} />
     </Router>
   </Provider>,
   document.getElementById("root")
