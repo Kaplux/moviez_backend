@@ -9,7 +9,7 @@ const credentials = { key: privateKey, cert: certificate };
 
 const bodyParser = require("body-parser");
 
-const auth = require("./auth.js");
+const { auth, validateToken } = require("./auth.js");
 
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 const schema = require("./schema");
@@ -40,7 +40,20 @@ app.post("/api/login", function(req, res) {
   }
 });
 
-app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+const buildOptions = async (req, res) => {
+  try {
+    const token = /Bearer (.*)/.exec(req.headers["authorization"])[1];
+    const user = validateToken(token);
+    console.log(user);
+    return {
+      context: { user },
+      schema
+    };
+  } catch (err) {
+    res.status(401).json({ message: "invalid token" });
+  }
+};
+app.use("/graphql", bodyParser.json(), graphqlExpress(buildOptions));
 app.use(
   "/graphiql",
   graphiqlExpress({

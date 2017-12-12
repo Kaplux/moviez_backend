@@ -1,8 +1,26 @@
 import ApolloClient from "apollo-client-preset";
 import gql from "graphql-tag";
 import { push } from "react-router-redux";
+import { setContext } from "apollo-link-context";
+import { createHttpLink } from "apollo-link-http";
 
-const client = new ApolloClient();
+const httpLink = createHttpLink({
+  uri: "/graphql"
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = JSON.parse(localStorage.getItem("userInfos")).token;
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : null
+    }
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink)
+});
 
 export function loadNewAndOpenSessions(email) {
   return dispatch => {
