@@ -4,4 +4,5 @@ build:
     - docker
   script: 
     - cd client
+    - yarn install
     - yarn test
