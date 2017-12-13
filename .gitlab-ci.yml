@@ -6,3 +6,5 @@ build:
     - cd client
     - yarn install
     - yarn test
+    - cd ../server
+    - yarn install
