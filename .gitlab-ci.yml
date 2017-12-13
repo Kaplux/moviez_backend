@@ -1,5 +1,7 @@
 image: kkarczmarczyk/node-yarn 
 build:
+  tags:
+    - docker
   script: 
     - cd client
     - yarn test
